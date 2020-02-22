@@ -1,0 +1,60 @@
+[
+    {
+        "title": "Form",
+        "properties": {
+            "name": {
+              "type": "string",
+              "description": "The person's full name."
+            },
+            "Dob": {
+              "type": "string",
+              "description": "The person's date of birth YYYY-mm-dd"
+            },
+            "gender": {
+              "description": "The person's gender",
+              "type": "string",
+              "minimum": 1
+            },
+            "contact": {
+                "description": "The person's contact details",
+                "type": "array",
+                "details": { "$ref": "#/definitions/contacts"}
+              },
+            "guardian":{
+                
+              }
+          },
+          "definitions":{
+              "contacts":{
+                  "type": "object",
+                  "required": ["contactType", "contactValue"],
+                  "properties":{
+                    "contactType":{
+                        "type" : "string",
+                        "description" : "The type of contact detail."
+                    },
+                    "contactValue":{
+                        "type": "string",
+                        "description": "The contact value."
+                    }
+                  }
+              },
+              "guardians":{
+                "type": "object",
+                "required": ["guardianName", "guardianContact"],
+                "properties":{
+                  "guardianName":{
+                      "type" : "string",
+                      "description" : "The Guardian's name."
+                  },
+                  "guardianContact":{
+                      "type": "string",
+                      "description": "The Guardian's contact detail",
+                      "details": { "$ref": "#/definitions/contacts"}
+                  }
+                }
+            }
+
+          }
+    }
+]
